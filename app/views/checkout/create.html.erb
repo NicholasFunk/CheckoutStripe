@@ -1,0 +1,9 @@
+<script>
+    var stripe = Stripe("<%= Rails.application.credentials[:stripe][:public] %>");
+
+    stripe_session = Stripe::Checkout::Session.create({
+        sessionId: '<%= @session.id %>'
+        }).then(function (result) {
+    });
+    redirect_to stripe_session.url, status: 303, allow_other_host: true
+</script>
